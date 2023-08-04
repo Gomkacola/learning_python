@@ -35,10 +35,10 @@ window_height = 600
 root.geometry(f"{window_width}x{window_height}")
 
 label = tk.Label(root, text="Hello, Tkinter!")
-label.pack()
+label.pack(anchor="w")
 
 button = tk.Button(root, text="Click Me!", command=on_button_click)
-button.pack()
+button.pack(anchor="w")
 
 # Create a menu bar
 menu_bar = tk.Menu(root)
@@ -57,8 +57,11 @@ file_menu.add_command(label="Exit", command=file_exit)
 
 # Create a "Edit" menu
 edit_menu = tk.Menu(menu_bar, tearoff=0)
+menu_bar.add_cascade(label="Edit", menu=edit_menu)
 
-edit_menu.add_separator
-
+# Add menu items to the "Edit" menu
+edit_menu.add_command(label="Cut", command=edit_cut)
+edit_menu.add_command(label="Copy", command=edit_copy)
+edit_menu.add_command(label="Paste", command=edit_paste)
 
 root.mainloop()
